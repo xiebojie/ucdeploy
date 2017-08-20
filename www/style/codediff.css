@@ -1,0 +1,275 @@
+.diff {
+    box-sizing: border-box;
+}
+
+div.diff {
+    max-width: 100%;
+    display: table;
+}
+
+table.diff {
+    width: 100%;
+    border-spacing: 0;
+}
+
+td.code {
+    /* this is the max width of each column of code. */
+    /* for table cells, `width` behaves more like `max-width`. */
+    width: 90ch;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+table.diff td {
+    vertical-align: top;
+}
+
+/* Line numbers with thin vertical bars to indicate wrapped lines. */
+.line-no {
+    color: #999;
+    background-color: #f7f7f7;
+    width: 32px;
+}
+.line-no:first-child {
+    background-image:
+        linear-gradient(to left, #f7f7f7, #f7f7f7 3px, transparent, transparent 6px, #f7f7f7 6px),
+        linear-gradient(#f7f7f7, #f7f7f7 1.4em, #aaa 1.4em);
+}
+.line-no:last-child {
+    background-image:
+        linear-gradient(to right, #f7f7f7, #f7f7f7 3px, transparent, transparent 6px, #f7f7f7 6px),
+        linear-gradient(#f7f7f7, #f7f7f7 1.4em, #aaa 1.4em);
+}
+
+table.diff .line-no:first-child {
+    border-right: 1px solid #ddd;
+    text-align: right;
+}
+table.diff .line-no:last-child {
+    border-left: 1px solid #ddd;
+    text-align: left;
+}
+table.diff td:nth-child(2) {
+    border-right: 1px solid #ddd;
+}
+
+.line-no, .code {
+    padding: 2px;
+    height: 1.11em;
+    font-family: monospace;
+}
+.diff .skip {
+    text-align: center;
+    background: #f7f7f7;
+}
+
+.diff .delete {
+    background-color: #fee;
+}
+.diff .insert {
+    background-color: #efe;
+}
+
+.before.replace {
+    background-color: #fee;
+}
+.after.replace {
+    background-color: #efe;
+}
+
+.before .char-replace, .before .char-delete {
+    background-color: #fcc;
+}
+
+.after .char-replace, .after .char-insert {
+    background-color: #cfc;
+}
+
+/* Single column selection */
+.selecting-left  td,
+.selecting-left  td *,
+.selecting-right td,
+.selecting-right td *
+{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selecting-left  td.line-no::selection,
+.selecting-left  td.line-no *::selection,
+.selecting-right td.line-no::selection,
+.selecting-right td.line-no *::selection,
+.selecting-left  td.after::selection,
+.selecting-left  td.after *::selection,
+.selecting-right td.before::selection,
+.selecting-right td.before *::selection
+{
+    background: transparent;
+}
+
+.selecting-left  td.line-no::-moz-selection,
+.selecting-left  td.line-no *::-moz-selection,
+.selecting-right td.line-no::-moz-selection,
+.selecting-right td.line-no *::-moz-selection,
+.selecting-left  td.after::-moz-selection,
+.selecting-left  td.after *::-moz-selection,
+.selecting-right td.before::-moz-selection,
+.selecting-right td.before *::-moz-selection
+{
+    background: transparent;
+}
+
+.selecting-left  td.before,
+.selecting-left  td.before *,
+.selecting-right td.after,
+.selecting-right td.after * {
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+
+.hljs {
+    display: block; padding: 0.5em;
+    background: white; color: black;
+}
+
+.hljs-comment,
+.hljs-template_comment,
+.hljs-javadoc,
+.hljs-comment * {
+    color: #800;
+}
+
+.hljs-keyword,
+.method,
+.hljs-list .hljs-title,
+.clojure .hljs-built_in,
+.nginx .hljs-title,
+.hljs-tag .hljs-title,
+.setting .hljs-value,
+.hljs-winutils,
+.tex .hljs-command,
+.http .hljs-title,
+.hljs-request,
+.hljs-status {
+    color: #008;
+}
+
+.hljs-envvar,
+.tex .hljs-special {
+    color: #660;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-cdata,
+.hljs-filter .hljs-argument,
+.hljs-attr_selector,
+.apache .hljs-cbracket,
+.hljs-date,
+.hljs-regexp,
+.coffeescript .hljs-attribute {
+    color: #080;
+}
+
+.hljs-sub .hljs-identifier,
+.hljs-pi,
+.hljs-tag,
+.hljs-tag .hljs-keyword,
+.hljs-decorator,
+.ini .hljs-title,
+.hljs-shebang,
+.hljs-prompt,
+.hljs-hexcolor,
+.hljs-rules .hljs-value,
+.css .hljs-value .hljs-number,
+.hljs-literal,
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.hljs-number,
+.css .hljs-function,
+.clojure .hljs-attribute {
+    color: #066;
+}
+
+.hljs-class .hljs-title,
+.haskell .hljs-type,
+.smalltalk .hljs-class,
+.hljs-javadoctag,
+.hljs-yardoctag,
+.hljs-phpdoc,
+.hljs-typename,
+.hljs-tag .hljs-attribute,
+.hljs-doctype,
+.hljs-class .hljs-id,
+.hljs-built_in,
+.setting,
+.hljs-params,
+.hljs-variable,
+.clojure .hljs-title {
+    color: #606;
+}
+
+.css .hljs-tag,
+.hljs-rules .hljs-property,
+.hljs-pseudo,
+.hljs-subst {
+    color: #000;
+}
+
+.css .hljs-class,
+.css .hljs-id {
+    color: #9B703F;
+}
+
+.hljs-value .hljs-important {
+    color: #ff7700;
+    font-weight: bold;
+}
+
+.hljs-rules .hljs-keyword {
+    color: #C5AF75;
+}
+
+.hljs-annotation,
+.apache .hljs-sqbracket,
+.nginx .hljs-built_in {
+    color: #9B859D;
+}
+
+.hljs-preprocessor,
+.hljs-preprocessor *,
+.hljs-pragma {
+    color: #444;
+}
+
+.tex .hljs-formula {
+    background-color: #EEE;
+    font-style: italic;
+}
+
+.diff .hljs-header,
+.hljs-chunk {
+    color: #808080;
+    font-weight: bold;
+}
+
+.diff .hljs-change {
+    background-color: #BCCFF9;
+}
+
+.hljs-addition {
+    background-color: #BAEEBA;
+}
+
+.hljs-deletion {
+    background-color: #FFC8BD;
+}
+
+.hljs-comment .hljs-yardoctag {
+    font-weight: bold;
+}

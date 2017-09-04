@@ -22,7 +22,7 @@ abstract class ctrl
         $this->user_model = new user_model();
         if (empty($this->auth_pass))
         {
-            if(empty($_SESSION['username']))
+            /*if(empty($_SESSION['username']))
             {  
                 $ldap_user = ldap_login();
                 if (!empty($ldap_user))
@@ -43,7 +43,7 @@ abstract class ctrl
             {
                 $this->username=$this->tpl_vars['username'] = $user['username'];
                 $this->user_id = $user['id'];
-            }
+            }*/
         }
         $this->layout = new layout();
     }

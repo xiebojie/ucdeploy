@@ -1,12 +1,4 @@
 <?php
-/*!
- * ucdeploy project
- *
- * Copyright 2017 xiebojie@qq.com
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- */
 class mysql
 {
     private $dbhost;
@@ -38,7 +30,7 @@ class mysql
                     $this->dbpwd, 
                     $this->dbname, 
                     $this->dbport,
-                    '/run/mysqld/mysqld.sock'
+                    '/private/tmp/mysql.sock'
             );
             if(!$this->dbh)
             {

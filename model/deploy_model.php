@@ -1,5 +1,5 @@
 <?php
-/*!
+/*
 * ucdeploy project
 *
 * Copyright 2017 xiebojie@qq.com

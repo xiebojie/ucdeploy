@@ -1,11 +1,10 @@
 {%extend base.inc.php%}
 {%block main%}
 <div class="pageheader">
-    <h1 class="pagetitle">系统管理</h1>
+    <h1 class="pagetitle">用户管理</h1>
     <ul class="hornav">
-        <li><a href="/user/list">账号管理</a></li>
-        <li class="current"><a href=""><?php echo empty($user)?'添加账号':'编辑账号'?></a></li>
-        <li><a href="/user/syslog">操作日志</a></li>
+        <li><a href="/user/list">用户列表</a></li>
+        <li class="current"><a href=""><?php echo empty($user)?'添加用户':'编辑用户'?></a></li>
     </ul>
 </div>
 <div class="contentpanel">
@@ -26,6 +25,12 @@
             <label  class="col-sm-1 control-label">Email</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control"  data-rule="required" name="email" value="{%$user['email']|default:''%}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">邀请码</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control"  data-rule="required" name="invitation" value="{%$user['email']|default:''%}"/>
             </div>
         </div>
         <div class="form-group">

@@ -9,7 +9,7 @@
  */
 class user_model extends model
 {
-    protected $primary_table = 'user';
+    protected $primary_table = 'uc_user';
     protected $primary_key = 'id';
     
     const STATUS_DISABLE=0;
@@ -24,14 +24,14 @@ class user_model extends model
     {
         $uid = intval($uid);
         $status = intval($status);
-        $sql = "UPDATE user SET status=$status WHERE id=$uid";
+        $sql = "UPDATE uc_user SET status=$status WHERE id=$uid";
         return self::$db->replace($sql);
     }
     
     public function fetch_by_username($username)
     {
         $username = addslashes($username);
-        $sql = "SELECT * FROM user WHERE username='$username'";
+        $sql = "SELECT * FROM uc_user WHERE username='$username'";
         return self::$db->fetch($sql);
     }
 }

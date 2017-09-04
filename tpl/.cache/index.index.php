@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link rel="icon" href="/style/images//favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <title>{%$title|default:'ucdeploy'%}</title>
+        <title><?php echo htmlspecialchars(empty($title)?'ucdeploy':$title);?></title>
         <link href="/style/bootstrap.min.css" rel="stylesheet"/>
         <link href="/style/bootstrap.datepicker.css" rel="stylesheet"/>
         <link href="/style/admin.base.css" rel="stylesheet"/>
@@ -15,7 +15,7 @@
             <div class="navbar-brand" style="font-size:28px;color:#fff">ucdeploy</div>
               <div class="pull-right whoami">
                    <a class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user"></span>{%$username|default:''%}
+                    <span class="glyphicon glyphicon-user"></span><?php echo htmlspecialchars(empty($username)?'':$username);?>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="/user/logout">退出</a></li>
@@ -36,7 +36,7 @@
                 </ul>
             </div>
             <div class="mainpanel">
-                {%block main%}{%endblock%}
+                
             </div>
         </div>
         <script src="/script/bootstrap.js"></script>

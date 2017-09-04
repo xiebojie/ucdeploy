@@ -9,7 +9,7 @@
 */
 class deploy_model extends model
 {
-    protected $primary_table = 'deploy';
+    protected $primary_table = 'uc_deploy';
     protected $primary_key   = 'id';
     
     const STATUS_INIT     = 0;
@@ -28,7 +28,8 @@ class deploy_model extends model
     public function fetch($deploy_id, $filter_where=[])
     {
         $deploy_id = intval($deploy_id);
-        $sql = "SELECT deploy.*,project.project_name FROM deploy LEFT JOIN project ON deploy.project_id=project.id WHERE deploy.id=$deploy_id";
+        $sql = "SELECT uc_deploy.*,project.project_name FROM uc_deploy LEFT JOIN uc_project "
+                . "ON uc_deploy.project_id=uc_project.id WHERE deploy.id=$deploy_id";
         return self::$db->fetch($sql);
     }
     
@@ -36,7 +37,7 @@ class deploy_model extends model
     {
         $offset = abs($offset);
         $limit_size = abs($limit_size);
-        $sql = "SELECT SQL_CALC_FOUND_ROWS deploy.*,project.project_name,project.last_deploy_id FROM deploy LEFT JOIN project ON deploy.project_id=project.id";
+        $sql = "SELECT SQL_CALC_FOUND_ROWS uc_deploy.*,uc_project.project_name,uc_project.last_deploy_id FROM uc_deploy LEFT JOIN uc_project ON uc_deploy.project_id=uc_project.id";
         if(!empty($filter_where))
         {
             $sql .=' WHERE '.  implode(' AND ', $filter_where);
@@ -55,14 +56,14 @@ class deploy_model extends model
     {
         $deploy_id = intval($deploy_id);
         $status = intval($status);
-        $sql = "UPDATE deploy SET status=$status,utime=NOW() WHERE id=$deploy_id";
+        $sql = "UPDATE uc_deploy SET status=$status,utime=NOW() WHERE id=$deploy_id";
         return self::$db->replace($sql);
     }
 
     public function fetch_log_list($deploy_id)
     {
         $deploy_id = intval($deploy_id);
-        $sql = "SELECT * FROM deploy_log WHERE deploy_id=$deploy_id ORDER BY id DESC";
+        $sql = "SELECT * FROM uc_deploy_log WHERE deploy_id=$deploy_id ORDER BY id DESC";
         return self::$db->fetch_all($sql);
     }
     
@@ -72,7 +73,7 @@ class deploy_model extends model
         $status = intval($status);
         $content= addslashes($content);
         $operator = addslashes($operator);
-        $sql = "INSERT INTO deploy_log SET deploy_id=$deploy_id,status=$status, content='$content',operator='$operator',ctime=NOW()";
+        $sql = "INSERT INTO uc_deploy_log SET deploy_id=$deploy_id,status=$status, content='$content',operator='$operator',ctime=NOW()";
         return self::$db->insert($sql);
     }
     
@@ -80,7 +81,7 @@ class deploy_model extends model
     {
         $deploy_id = intval($deploy_id);
         $zipfile = addslashes($zipfile);
-        $sql = "UPDATE deploy SET last_backup_file='$zipfile' WHERE id=$deploy_id";
+        $sql = "UPDATE uc_deploy SET last_backup_file='$zipfile' WHERE id=$deploy_id";
         return self::$db->replace($sql);
     }
 }

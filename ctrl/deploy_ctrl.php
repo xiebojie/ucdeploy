@@ -1,5 +1,5 @@
 <?php
-/*!
+/*
  * ucdeploy project
  *
  * Copyright 2017 xiebojie@qq.com
@@ -18,6 +18,7 @@ class deploy_ctrl extends ctrl
         $this->model = new deploy_model();
         ignore_user_abort(true);
         set_time_limit(0);
+        $this->user_id=1;
     }
 
     public function index()

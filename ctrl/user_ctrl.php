@@ -71,18 +71,6 @@ class user_ctrl extends ctrl
             $this->model->set_status($uid,$status);
         }
     }
-
-    public function syslog()
-    {  
-        $filter_rules = array(
-            'id'=>'column:id|compare:equal',
-        );
-        $filter_where = form_filter_parse($filter_rules, $_GET);
-        list($page, $psize) = $this->fetch_paging_param();
-        list($loglist, $total) = $this->model->search_list($filter_where, ($page-1)*$psize, $psize);
-        $this->assign('loglist', $loglist,'total',$total);
-        $this->display('users.syslog.php');
-    }
     
     public function logout()
     {

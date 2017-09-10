@@ -50,7 +50,7 @@
     </div>
     <form class="form-horizontal mt30" method="post">
         <div class="form-group">
-            <label  class="col-sm-1 control-label">源码工具</label>
+            <label class="col-sm-2 control-label">源码工具</label>
             <div class="col-sm-10">
                 <select name="repository_type" class="form-control" data-val="<?php echo htmlspecialchars(empty($project['repository_type'])?'':$project['repository_type']);?>">
                     <option value="svn">svn</option>
@@ -59,61 +59,61 @@
             </div>
         </div>
         <div class="form-group">
-            <label  class="col-sm-1 control-label">项目名</label>
+            <label  class="col-sm-2 control-label">项目名</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="project_name" data-rule="required" 
                     value="<?php echo htmlspecialchars(empty($project['project_name'])?'':$project['project_name']);?>"/>
             </div>
         </div>
         <div class="form-group">
-            <label  class="col-sm-1 control-label">源码库地址</label>
+            <label  class="col-sm-2 control-label">源码库地址</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="repository_url" data-rule="required" 
                     value="<?php echo htmlspecialchars(empty($project['repository_url'])?'':$project['repository_url']);?>"/>
             </div>
         </div>
         <div class="form-group only-svn">
-            <label  class="col-sm-1 control-label">源码库用户</label>
+            <label  class="col-sm-2 control-label">源码库用户</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="repository_user" value="<?php echo htmlspecialchars(empty($project['repository_user'])?'':$project['repository_user']);?>"/>
             </div>
         </div>
         <div class="form-group only-svn">
-            <label  class="col-sm-1 control-label">源码库密码</label>
+            <label class="col-sm-2 control-label">源码库密码</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="repository_passwd" />
             </div>
         </div>
         <div class="form-group">
-            <label  class="col-sm-1 control-label">部署路径</label>
+            <label class="col-sm-2 control-label">部署路径</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="deploy_path" data-rule="required"
                     value="<?php echo htmlspecialchars(empty($project['deploy_path'])?'':$project['deploy_path']);?>"/>
             </div>
         </div> 
         <div class="form-group">
-            <label  class="col-sm-1 control-label">排除文件</label>
+            <label  class="col-sm-2 control-label">排除文件</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="exclude_path"  placeholder="用','分开"
                     value="<?php echo htmlspecialchars(empty($project['exclude_path'])?'':$project['exclude_path']);?>"/>
             </div>
         </div>    
         <div class="form-group">
-            <label  class="col-sm-1 control-label">回归机</label>
+            <label  class="col-sm-2 control-label">回归机</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="regression_server" data-rule="required"
                     value="<?php echo htmlspecialchars(empty($project['regression_server'])?'':$project['regression_server']);?>"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">部署机器</label>
+            <label class="col-sm-2 control-label">部署机器</label>
             <div class="col-sm-10">
                 <textarea type="text" class="form-control" cols="32" rows="6" name="deploy_server" 
                     data-rule="required"><?php echo htmlspecialchars(empty($project['deploy_server'])?'':$project['deploy_server']);?></textarea>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label"></label>
+            <label class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-success"><?php echo empty($project)?'添加项目':'编辑项目'?></button>
             </div>

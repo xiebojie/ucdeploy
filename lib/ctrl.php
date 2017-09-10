@@ -22,28 +22,19 @@ abstract class ctrl
         $this->user_model = new user_model();
         if (empty($this->auth_pass))
         {
-            /*if(empty($_SESSION['username']))
+            if(empty($_SESSION['signin']) && UC_APP_TOKEN !='')
             {  
-                $ldap_user = ldap_login();
+                $ldap_user = uchome_ldap_signin();
                 if (!empty($ldap_user))
                 {
-                    $_SESSION['username'] = $ldap_user['user'];
-                } 
+                    $_SESSION['signin'] = $ldap_user;
+                }
+            }else if(!empty ($_SESSION['signin']))
+            {
+                redirect('/sigin');
             }
-          
-            $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
-            $user = $this->user_model->fetch_by_username($username);
-            if(empty($user))
-            {
-                show_err("你没有权限使用发布系统请联系xiebojie@360 添加账号");
-            }else if($user['status']!=user_model::STATUS_ENABLE)
-            {
-                show_err("你的账号已禁用");
-            }else
-            {
-                $this->username=$this->tpl_vars['username'] = $user['username'];
-                $this->user_id = $user['id'];
-            }*/
+            $this->username=$this->tpl_vars['username'] = $_SESSION['signin']['username'];
+            $this->user_id = $_SESSION['signin']['user_id'];
         }
         $this->layout = new layout();
     }

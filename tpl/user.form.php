@@ -28,12 +28,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label  class="col-sm-1 control-label">邀请码</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control"  data-rule="required" name="invitation" value="{%$user['email']|default:''%}"/>
-            </div>
-        </div>
-        <div class="form-group">
             <label  class="col-sm-1 control-label"></label>
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-success">提 交</button>

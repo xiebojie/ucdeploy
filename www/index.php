@@ -24,6 +24,17 @@ define('MYSQL_USER','root');
 define('MYSQL_PASSWD','ppiao');
 define('MYSQL_DBNAME','ucdeploy');
 
+define('UC_APP_TOKEN','');
+define('UCHOME_SIGNIN_URI','');
+
+function uchome_ldap_signin()
+{
+    return array(
+        'user_id'=>1,
+        'username'=>'xiebojie'
+    );
+}
+
 function autoload($class)
 {
     if (stripos($class, "redis") === false)

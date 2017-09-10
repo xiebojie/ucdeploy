@@ -33,8 +33,8 @@ abstract class ctrl
             {
                 redirect('/sigin');
             }
-            $this->username=$this->tpl_vars['username'] = $_SESSION['signin']['username'];
-            $this->user_id = $_SESSION['signin']['user_id'];
+            //$this->username=$this->tpl_vars['username'] = $_SESSION['signin']['username'];
+            //$this->user_id = $_SESSION['signin']['user_id'];
         }
         $this->layout = new layout();
     }

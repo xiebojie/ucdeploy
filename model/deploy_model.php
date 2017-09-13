@@ -28,8 +28,8 @@ class deploy_model extends model
     public function fetch($deploy_id, $filter_where=[])
     {
         $deploy_id = intval($deploy_id);
-        $sql = "SELECT uc_deploy.*,project.project_name FROM uc_deploy LEFT JOIN uc_project "
-                . "ON uc_deploy.project_id=uc_project.id WHERE deploy.id=$deploy_id";
+        $sql = "SELECT uc_deploy.*,uc_project.project_name FROM uc_deploy LEFT JOIN uc_project "
+                . "ON uc_deploy.project_id=uc_project.id WHERE uc_deploy.id=$deploy_id";
         return self::$db->fetch($sql);
     }
     

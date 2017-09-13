@@ -15,12 +15,12 @@ class project_model extends model
     public function grant($project_id, Array $developer_list)
     {
         $project_id = intval($project_id);
-        self::$db->delete("DELETE FROM project_developer WHERE project_id=$project_id");
+        self::$db->delete("DELETE FROM uc_project_developer WHERE project_id=$project_id");
         foreach ($developer_list as $uid=>$username)
         {
-            self::$db->insert("INSERT INTO project_developer SET project_id=$project_id,user_id='$uid'");
+            self::$db->insert("INSERT INTO uc_project_developer SET project_id=$project_id,user_id='$uid'");
         }
-        $sql = sprintf("UPDATE project SET developer='%s' WHERE id=$project_id" , addslashes(implode(',', $developer_list))) ;
+        $sql = sprintf("UPDATE uc_project SET developer='%s' WHERE id=$project_id" , addslashes(implode(',', $developer_list))) ;
         self::$db->replace($sql);
     }
     
@@ -60,7 +60,7 @@ class project_model extends model
     {
         $project_id = intval($project_id);
         $user_id = intval($user_id);
-        $sql = "SELECT project.* FROM uc_project LEFT JOIN uc_project_developer ON uc_project.id = uc_project_developer.project_id WHERE uc_project.id=$project_id
+        $sql = "SELECT uc_project.* FROM uc_project LEFT JOIN uc_project_developer ON uc_project.id = uc_project_developer.project_id WHERE uc_project.id=$project_id
                 AND user_id=$user_id";
         return self::$db->fetch($sql);
     }

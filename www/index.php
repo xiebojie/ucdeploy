@@ -108,6 +108,78 @@ function http_request($url, $method = "GET", $payload = null, $user = '', $passw
 }
 
 
+function rscandir($dir)
+{
+    $file_list = array();
+    $stack[] = $dir;
+    while ($stack)
+    {
+        $current_dir = array_pop($stack);
+        if ($dh = opendir($current_dir))
+        {
+            while (($file = readdir($dh)) !== false)
+            {
+                if ($file !== '.' && $file !== '..' &&!preg_match('/^\./', $file))
+                {
+                    $current_file = "{$current_dir}/{$file}";
+                    if (is_file($current_file))
+                    {
+                        $file_list[] = str_replace("{$dir}/", '', "{$current_dir}/{$file}");
+                    }elseif (is_dir($current_file))
+                    {
+                        $stack[] = $current_file;
+                        $file_list[] = str_replace("{$dir}/", '', "{$current_dir}/{$file}/");
+                    }
+                }
+            }
+        }
+    }
+    return $file_list;
+}
+
+function scandir_tree($dir,$basedir)
+{
+    $dir  = rtrim($dir,'/');
+    $file_list = array();
+    $dh = opendir($dir);
+    if ($dh)
+    {
+        while (($file = readdir($dh)) !== false)
+        {
+            if ($file !== '.' && $file !== '..' &&!preg_match('/^\./', $file))
+            {
+                if (is_file($dir.'/'.$file))
+                {
+                    $file_list[str_replace($basedir,'',$dir.'/'.$file)] = $file;
+                }elseif (is_dir($dir.'/'.$file))
+                {
+                    $file_list[str_replace($basedir,'',$dir.'/'.$file)] = scandir_tree($dir.'/'.$file,$basedir);
+                }
+            }
+        }
+    }
+    return $file_list;
+}
+
+
+function assert_success($is_success,$message,$stderr)
+{
+    if($is_success)
+    {
+        throw new Exception($message .'stderr:'.$stderr);
+    }
+}
+
+function get_repository($type,$path, $user,$password)
+{
+    if($type=='svn'){
+        $repository = new shell\svn($path,$user,$password);
+    }else{
+        $repository = new shell\git($path, $user, $password);
+    }
+    return $repository;
+}
+
 function ssl_encrypt($source, $key)
 {
     $maxlength = 52;

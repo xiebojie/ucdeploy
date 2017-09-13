@@ -39,6 +39,7 @@
             <th>用户名</th>
             <th>手机</th>
             <th>email</th>
+            <th>邀请码</th>
             <th>状态</th>
             <th width="260">操作</th>
         </tr>
@@ -48,6 +49,7 @@
             <td>{%$_user['username']%}</td>
             <td>{%$_user['mobile']%}</td>
             <td>{%$_user['email']%}</td>
+            <td>{%$_user['invitation']%}</td>
             <td><?php echo user_model::$status_list[$_user['status']]?></td>
             <td align="center">
                 <?php if($_user['status']==user_model::STATUS_ENABLE):?>
@@ -59,8 +61,10 @@
                     <span class="glyphicon glyphicon-ok-circle"></span> 启用
                 </a>
                 <?php endif;?>
-                <a href="/user/form/{%$_user['id']%}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
-                <a href="" class="btn btn-warning">重置密码</a>
+                <a href="/user/form/{%$_user['id']%}" class="btn btn-info">
+                    <span class="glyphicon glyphicon-edit"></span> 编辑</a>
+                <a href="/user/form/reset/{%$_user['id']%}" data-confirm="确定要重置密码吗" 
+                   class="btn btn-warning ajax-post">重置密码</a>
             </td>
         </tr>
         <?php endforeach;?>

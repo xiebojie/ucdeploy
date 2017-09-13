@@ -72,10 +72,14 @@ class user_ctrl extends ctrl
         }
     }
     
-    public function logout()
+    public function reset($user_id=-1)
     {
-        session_destroy();
-        return redirect('/');
+        $user = $this->model->fetch($user_id);
+        if($_SERVER['REQUEST_METHOD']=='POST' &&!empty($user))
+        {
+            $invitation= substr(md5(getmypid().time()),0,6);
+            $this->model->update($user_id,array('invitation'=>$invitation));
+            return array('error'=>0,'invitation'=>$invitation);
+        }
     }
-    
 }

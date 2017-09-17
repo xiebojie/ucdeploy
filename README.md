@@ -29,3 +29,8 @@ server {
 4. 修改www目录下的index.php 文件的数据库配置常量MYSQL_HOST、MYSQL_PORT、MYSQL_USER、MYSQL_PASSWD指向真实的数据库参数
 5. 打开浏览器访问你配置的地址，使用admin账号登录默认密码是uchome-admin
 补充：如果使用uchome 作为用户登陆服务器 请配置www目录下的index.php UC_APP_TOKEN和UCHOME_SIGNIN_URI 指向真实的uchome参数
+
+<img src="https://raw.githubusercontent.com/xiebojie/ucdeploy/master/doc/screenshot/01.png"/>
+<img src="https://raw.githubusercontent.com/xiebojie/ucdeploy/master/doc/screenshot/02.png"/>
+<img src="https://raw.githubusercontent.com/xiebojie/ucdeploy/master/doc/screenshot/03.png"/>
+<img src="https://raw.githubusercontent.com/xiebojie/ucdeploy/master/doc/screenshot/04.png"/>
